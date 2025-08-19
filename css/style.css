@@ -14,6 +14,11 @@
     /* высота хедера — изменяйте при необходимости */
     --header-height: 80px;
 }
+@font-face {
+  font-family: 'MyFont';
+  src: url('/fonts/myfont.woff2') format('woff2');
+  font-display: swap;
+}
 
 * {
     margin: 0;
