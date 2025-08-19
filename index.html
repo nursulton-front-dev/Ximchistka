@@ -6,16 +6,19 @@
     <title>
       Мобильная химчистка и стирка (аквачистка) | Экологичное решение
     </title>
+
+    <!-- SEO -->
     <meta
       name="description"
       content="Экологически чистое и автономное решение для удобной химчистки и стирки в любом месте. Работаем по всей России."
     />
-    <link rel="icon" type="image/png" href="./img/logo.webp" />
     <meta
       name="keywords"
       content="мобильная химчистка, аквачистка, стирка, контейнер, автономная химчистка, экологичная стирка"
     />
+    <link rel="icon" type="image/png" href="./img/logo.png" />
 
+    <!-- Open Graph (Facebook, Telegram, LinkedIn) -->
     <meta
       property="og:title"
       content="Мобильная химчистка и стирка (аквачистка)"
@@ -26,19 +29,43 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://gryznuley.net" />
-    <!-- OG для Facebook, Telegram, LinkedIn -->
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://gryznuley.net/img/logo.webp" />
+    <meta property="og:image" content="https://gryznuley.net/img/logo.png" />
     <meta property="og:locale" content="ru_RU" />
 
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Мобильная химчистка и стирка (аквачистка)"
+    />
+    <meta
+      name="twitter:description"
+      content="Экологически чистое и автономное решение для удобной химчистки и стирки в любом месте."
+    />
+    <meta name="twitter:image" content="https://gryznuley.net/img/logo.png" />
+
+    <!-- Preload -->
     <link rel="preload" href="./css/style.css" as="style" />
     <link rel="preload" href="./js/script.js" as="script" />
+    <!-- если будут кастомные шрифты -->
+    <!-- <link rel="preload" href="./fonts/myfont.woff2" as="font" type="font/woff2" crossorigin /> -->
+
+    <!-- Styles -->
     <link rel="stylesheet" href="./css/style.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      />
+    </noscript>
   </head>
+
   <body>
     <!-- Header -->
     <header id="header" class="header">
