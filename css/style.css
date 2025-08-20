@@ -992,3 +992,38 @@ h2::after {
     padding-bottom: 16px;
   }
 }
+/* Equipment Section — улучшенные размеры для мобильных */
+#equipment h2 {
+    font-size: clamp(1.2rem, 5vw, 2.4rem); /* от 1.8rem на маленьких до 2.4rem на средних */
+    line-height: 1.2;
+    margin-bottom: 25px;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+.solution-content h3 {
+    font-size: clamp(1.5rem, 4.5vw, 2rem); /* крупнее заголовки внутри блоков */
+    margin-bottom: 15px;
+}
+
+.solution-content p {
+    font-size: clamp(1.1rem, 4vw, 1.4rem); /* текст крупнее, но не ломает верстку */
+    line-height: 1.6;
+}
+
+/* Отступы между блоками на мобильных */
+@media (max-width: 576px) {
+    .solutions {
+        gap: 50px; /* увеличим расстояние между элементами */
+    }
+
+    .solution, .solution-reverse {
+        flex-direction: column;
+        gap: 25px; /* вертикальный gap между текстом и изображением */
+    }
+
+    .solution-image img {
+        max-width: 100%;
+        height: auto;
+    }
+}
