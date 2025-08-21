@@ -157,3 +157,92 @@ document
   .addEventListener("click", function () {
     document.getElementById("about").scrollIntoView({ behavior: "smooth" });
   });
+// ===== Подсветка активного пункта меню =====
+const navLinks = Array.from(
+  document.querySelectorAll(".main-nav a, .mobile-menu a")
+);
+const headerEl = document.getElementById("header");
+const getHeaderHeight = () => (headerEl ? headerEl.offsetHeight : 0);
+
+// Секции на странице
+const sections = Array.from(document.querySelectorAll("section[id]"));
+
+function clearActive() {
+  navLinks.forEach((l) => l.classList.remove("active"));
+}
+
+function setActiveById(id) {
+  clearActive();
+  navLinks.forEach((link) => {
+    if (link.getAttribute("href") === `#${id}`) {
+      link.classList.add("active");
+    }
+  });
+}
+
+function smoothScrollToId(id) {
+  const target = document.getElementById(id);
+  if (!target) return;
+  const top =
+    target.getBoundingClientRect().top +
+    window.scrollY -
+    (getHeaderHeight() + 10);
+  window.scrollTo({ top, behavior: "smooth" });
+}
+
+// Обработчики кликов по пунктам меню
+navLinks.forEach((link) => {
+  const href = link.getAttribute("href");
+  if (href && href.startsWith("#")) {
+    const id = href.slice(1);
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      // Закрываем мобильное меню, если открыто
+      if (mobileMenu.classList.contains("open")) {
+        mobileMenu.classList.remove("open");
+        document.body.classList.remove("no-scroll");
+      }
+      setActiveById(id);
+      smoothScrollToId(id);
+      history.pushState(null, "", `#${id}`);
+    });
+  }
+});
+
+// Следим за активной секцией при скролле
+let currentActiveId = null;
+const observer = new IntersectionObserver(
+  (entries) => {
+    const visible = entries
+      .filter((en) => en.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+    if (visible.length > 0) {
+      const id = visible[0].target.id;
+      if (id !== currentActiveId) {
+        currentActiveId = id;
+        setActiveById(id);
+      }
+    }
+  },
+  {
+    root: null,
+    rootMargin: `-${getHeaderHeight() + 20}px 0px -50% 0px`,
+    threshold: Array.from({ length: 11 }, (_, i) => i / 10),
+  }
+);
+
+sections.forEach((sec) => observer.observe(sec));
+
+// Подсветка при загрузке
+window.addEventListener("load", () => {
+  const id = (location.hash || "#hero").slice(1);
+  if (document.getElementById(id)) {
+    setActiveById(id);
+    if (location.hash) {
+      setTimeout(() => smoothScrollToId(id), 0);
+    }
+  } else {
+    setActiveById(sections[0]?.id || "hero");
+  }
+});

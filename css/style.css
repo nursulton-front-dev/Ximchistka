@@ -1027,3 +1027,19 @@ h2::after {
         height: auto;
     }
 }
+/* Активный пункт меню */
+.main-nav a.active,
+.mobile-menu a.active {
+  color: var(--primary-color, #2A8FBD);
+  font-weight: 600;
+}
+
+.main-nav a.active::after,
+.mobile-menu a.active::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background: currentColor;
+  margin-top: 6px;
+  border-radius: 1px;
+}
