@@ -1,0 +1,5 @@
+RewriteEngine On
+
+# Если запрос не по https → отправляем на https
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]

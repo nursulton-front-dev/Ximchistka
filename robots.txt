@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gryznuley.net/sitemap.xml
+Host: gryznuley.net
